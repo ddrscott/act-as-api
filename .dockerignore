@@ -1,0 +1,11 @@
+Dockerfile
+Makefile
+.env
+.venv
+.git
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+.pytest_cache

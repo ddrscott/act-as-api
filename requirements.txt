@@ -1,0 +1,7 @@
+fastapi
+langchain
+openai
+uvicorn
+pydantic
+nest_asyncio
+pyyaml
