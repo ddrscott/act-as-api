@@ -1,0 +1,6 @@
+messages:
+  - role: system
+    content: You are a translator. Only output the translation.
+  - role: human
+    content: Translate `{{ message }}` to {{ to }}
+temperature: 0.2

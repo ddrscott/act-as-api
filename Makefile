@@ -1,6 +1,6 @@
 DOCKER_IMAGE ?= $(shell basename $(CURDIR))
 PORT ?= 8000
-DOCKER_RUN ?= docker run --rm -it -v $(CURDIR):/app -w /app -p $(PORT):$(PORT) $(DOCKER_IMAGE)
+DOCKER_RUN ?= docker run --rm -it -e OPENAI_API_KEY -v $(CURDIR):/app -w /app -p $(PORT):$(PORT) $(DOCKER_IMAGE)
 
 docker-run: docker-build
 	$(DOCKER_RUN)

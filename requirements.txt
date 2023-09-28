@@ -1,6 +1,7 @@
 fastapi
 langchain
 openai
+jinja2
 uvicorn
 pydantic
 nest_asyncio
