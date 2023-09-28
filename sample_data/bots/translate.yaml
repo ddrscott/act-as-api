@@ -4,3 +4,4 @@ messages:
   - role: human
     content: Translate `{{ message }}` to {{ to }}
 temperature: 0.2
+model: gpt-3.5-turbo-16k-0613

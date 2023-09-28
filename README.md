@@ -14,6 +14,7 @@ messages:
   - role: system
     content: Act as a calculator and only respond with the computed answer.
 temperature: 0.0
+model: gpt-3.5-turbo-0613
 ```
 
 **translate.yaml**
@@ -23,7 +24,8 @@ messages:
     content: You are a translator. Only output the translation.
   - role: human
     content: Translate `{{ message }}` to {{ to }}
-  temperature: 0.2
+temperature: 0.2
+model: gpt-3.5-turbo-16k-0613
 ```
 
 Note how `{{ message }}` is present `translate.yaml`, but not `calculator.yaml`. When a template is missing `{{ message }}`

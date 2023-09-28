@@ -10,6 +10,7 @@ import sys
 
 BOTS_PATH = 'sample_data/bots'
 DEFAULT_LLM_MODEL = 'gpt-3.5-turbo-0613'
+DEFAULT_LLM_TEMPERATURE = '0.5'
 OPENAI_API_KEY = 'must be set'
 
 

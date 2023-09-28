@@ -44,17 +44,18 @@ class Bot(BaseModel):
     name: str
     messages: list[dict[str, str]]
     temperature: float = 0.5
+    model: str
 
     def one_shot(self, **params) -> str:
         """
         Predict the response of a bot to a list of messages.
         """
         messages = build_messages(self.messages, **params)
-        return predict(messages, temperature=self.temperature)
+        return predict(messages, model=self.model, temperature=self.temperature)
 
     def async_one_shot(self, **params) -> AsyncIterable[str]:
         messages = build_messages(self.messages, **params)
-        return async_predict(messages)
+        return async_predict(messages, model=self.model, temperature=self.temperature)
 
 @lru_cache
 def fetch_all():
@@ -143,6 +144,8 @@ def predict(messages, model:str=env.DEFAULT_LLM_MODEL, max_retries=5, temperatur
     """
     Wrapper around ChatOpenAI.predict_messages that allows for custom callbacks.
     """
+    model = model or env.DEFAULT_LLM_MODEL
+    temperature = temperature or float(env.DEFAULT_LLM_TEMPERATURE)
     llm = ChatOpenAI(
         model=model,
         client=None,
@@ -156,18 +159,21 @@ def predict(messages, model:str=env.DEFAULT_LLM_MODEL, max_retries=5, temperatur
     response = llm.predict_messages(messages)
     return response.content
 
-async def async_predict(messages, model:str=env.DEFAULT_LLM_MODEL) -> AsyncIterable[str]:
+async def async_predict(messages, model:str, temperature:float) -> AsyncIterable[str]:
     """
     Allows for tokens to be yielded as they are generated.
 
     Thanks: https://gist.github.com/ninely/88485b2e265d852d3feb8bd115065b1a
     """
+    model = model or env.DEFAULT_LLM_MODEL
+    temperature = temperature or float(env.DEFAULT_LLM_TEMPERATURE)
     async_callback = AsyncIteratorCallbackHandler()
     llm = ChatOpenAI(
         client=None,
         model=model,
         streaming=True,
         verbose=True,
+        temperature=temperature,
         callbacks=[async_callback, CustomHandler()],
     )
 

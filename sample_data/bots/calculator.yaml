@@ -2,3 +2,4 @@ messages:
   - role: system
     content: Act as a calculator and only respond with the computed answer.
 temperature: 0.0
+model: gpt-3.5-turbo-0613
