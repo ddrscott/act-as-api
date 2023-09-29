@@ -11,8 +11,11 @@ import sys
 BOTS_PATH = 'sample_data/bots'
 DEFAULT_LLM_MODEL = 'gpt-3.5-turbo-0613'
 DEFAULT_LLM_TEMPERATURE = '0.5'
-OPENAI_API_KEY = 'must be set'
+OPENAI_API_KEY = 'must be set!'
 
+AUTH0_AUDIENCE = 'must be set!'
+AUTH0_DOMAIN = 'must be set!'
+CLIENT_ORIGIN_URL = 'must be set!'
 
 def keys():
     # must be all caps or underscores

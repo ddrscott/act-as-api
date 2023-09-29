@@ -1,8 +1,13 @@
+PyJWT
+cryptography
 fastapi
-langchain
-openai
 jinja2
-uvicorn
-pydantic
+langchain
 nest_asyncio
+openai
+pydantic
 pyyaml
+secure
+starlette
+typing_extensions
+uvicorn
