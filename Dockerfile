@@ -1,9 +1,4 @@
-FROM python:3.11-slim
-
-RUN apt-get update \
-    && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.11-alpine
 
 ENV PYTHONFAULTHANDLER=1 \
   PYTHONUNBUFFERED=1 \
@@ -14,7 +9,7 @@ ENV PYTHONFAULTHANDLER=1 \
 
 WORKDIR $APP_HOME
 
-COPY requirements.txt requirements.lock ./
+COPY requirements.lock ./
 
 RUN pip install -r requirements.lock
 
